@@ -22,7 +22,6 @@ var divHeight = 5;
 var divWidth = 11;
 var cubeWidth = width / divWidth;
 var cubeHeight = height / divHeight;
-var solutionCubes = [];
 var blackList = [];
 var toRotate = [];
 document.addEventListener( 'mousedown', onDocumentMouseDown, false );
@@ -123,7 +122,7 @@ for (var i = 0; i < str.length; i++){
 	var cube = cubes[index];
 	usedIndices.push(index);
 	cube.add(addLetter(str[i],cubeHeight, cubeWidth));
-	solutionCubes.push(cube);
+	cube.letter = str[i];
 }
 
 
@@ -162,10 +161,11 @@ function render() {
 		continue;
 	}
    toRotate[i].rotation.x += 0.05;
-    if (toRotate[i].rotation.x > Math.PI && solutionCubes[progress] === toRotate[i]){
+     if (toRotate[i].rotation.x > Math.PI && toRotate[i].letter == str[0]){
 	 blackList.push(toRotate[i]);
 	 toRotate[i].rotation.x = Math.PI;
 	 toRotate.splice(i, 1);
+	 str = str.substring(1);
 	 progress++;
 	}
    else if (toRotate[i].rotation.x > Math.PI*2){
