@@ -45,7 +45,7 @@ function addLetter(string,textsize,maxwidth){
 	var mesh    = new THREE.Mesh( geometry, material1 );
 
 
-	mesh.position.set(0,0,-2);
+	mesh.position.set(0,0,-1);
 	mesh.rotation.x = Math.PI;
 	return mesh;
 }
@@ -134,6 +134,13 @@ light.shadow.mapSize.width = 2048;
 light.shadow.mapSize.height = 2048;
 scene.add(light);
 
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize(){
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
 function render() {
 
    for (var i = 0; i < toRotate.length; i++){
