@@ -1,63 +1,337 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Transportershop</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <!-- Bootstrap core CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Transportershop</title>
 
-    <!-- Custom styles for this template -->
-    <link href="album.css" rel="stylesheet">
-  </head>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
 
-  <body>
+  <!-- Custom styles for this template -->
+  <link href="album.css" rel="stylesheet">
+</head>
 
-    <main role="main">
+<body>
 
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Falk's Transporterquartett</h1>
-        </div>
-      </section>
+  <main role="main">
 
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="https://secure.pic.autoscout24.net/images-big/547/397/0338397547001.jpg?fdf4612d03d3dc23cde1184cc59d3f44" alt="Card image cap">
-                <div class="card-body">
-                  <h5>Hyundai H 350 L2 2.5D</h5>
-                  <p class="card-text"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </main>
-
-    <footer class="text-muted">
+    <section class="jumbotron text-center">
       <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+        <h1 class="jumbotron-heading">Falk's Transporterquartett</h1>
       </div>
-    </footer>
+    </section>
 
-    <!-- Bootstrap core JavaScript
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row" id="cardcontainer">
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="text-muted">
+  </footer>
+
+  <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script  src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/0.9.90/jsrender.min.js"></script>
+  <script id="carTemplate" type="text/x-jsrender">
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <img class="card-img-top" src={{:img}}></img>
+        <div class="card-body">
+          <h4 class="h4">{{:name}}</h4>
+          <p class="card-text">
+            <table class="table table-sm">
+              <thead></thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <b>Preis</b>
+                  </td>
+                  <td>
+                    <b>{{:price}}</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>PS</b>
+                  </td>
+                  <td>{{:hp}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>KM</b>
+                  </td>
+                  <td>{{:km}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>Erstzulassung/Modelljahr</b>
+                  </td>
+                  <td>{{:year}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>Neuwagen?</b>
+                  </td>
+                  <td>{{:isnew}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <b> Nutzlast</b>
+                  </td>
+                  <td>{{:load}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>Maße</b>
+                  </td>
+                  <td>{{:dimensions}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>Maße innen</b>
+                  </td>
+                  <td>{{:innerdimensions}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>In</b>
+                  </td>
+                  <td>{{:where}}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>Angebot</b>
+                  </td>
+                  <td>
+                    <a href={{:link}} target="_blank">LINK</a>
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                      <b>Wissenswertes</b>
+                    </td>
+                    <td>
+                      {{:extra}}
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </script>
+  <script>
+    $(function () {
+     console.log("here we go", $);
+      var carData = [{
+        name: "Hyundai H 350 L2 2.5 D",
+        img: "https://secure.pic.autoscout24.net/images-big/547/397/0338397547001.jpg?fdf4612d03d3dc23cde1184cc59d3f44",
+        price: "21.500,-",
+        hp: "150",
+        isnew: "Nein",
+        km: "600",
+        year: "12/2017",
+        load: "1160 kg",
+        dimensions: "5.51 m x 2.436 m x 2.69 m",
+        innerdimensions: "3.1 m x 1.8 m x 1.95",
+        where: "Helmbrechts bei Coburg",
+        link: "https://www.autoscout24.de/angebote/hyundai-h-350-l2-2-5-d-150ps-3-sitz-klima-rcd-bth-nsw-diesel-weiss-731caf5e-ce99-451e-86ee-8bd3efba3e40?cldtidx=5",
+        extra: "-"
+      },
+      {
+        name: "Volkswagen Crafter Kasten 35",
+        img: "https://i.ebayimg.com/00/s/MTA2NlgxNjAw/z/qnYAAOSwY~1aRPIk/$_20.jpg",
+        price: "24.360,-",
+        hp: "163",
+        isnew: "Ja",
+        km: "10",
+        year: "2016",
+        load: "ca 1000 kg",
+        dimensions: "",
+        innerdimensions: "",
+        where: "Hamburg/Bremen",
+        link: "https://suchen.mobile.de/fahrzeuge/details.html?id=255140794&ambitCountry=DE&damageUnrepaired=NO_DAMAGE_UNREPAIRED&features=TAIL_LIFT&features=TRAILER_COUPLING&fuels=DIESEL&grossPrice=false&isSearchRequest=true&maxMileage=20000&maxPrice=40000&maxSeats=3&minPrice=10000&pageNumber=1&scopeId=VUT75&transmissions=AUTOMATIC_GEAR&transmissions=MANUAL_GEAR&searchId=63ef4d7e-fe1a-611d-963c-6f9ace72322d",
+        extra: "Herstellergarantie bis August 2019"
+      },
+      {
+        name: "Ford Transit hoch + lang",
+        img: "https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/N9UAAOSwJ7RYXO6Y/$_20.jpg",
+        price: "24.280,-",
+        hp: "131",
+        isnew: "Nein",
+        km: "10.000",
+        year: "12/2016",
+        load: "1160 kg",
+        dimensions: "",
+        innerdimensions: "",
+        where: "Hemmoor, Cuxhaven",
+        link: "https://suchen.mobile.de/fahrzeuge/details.html?id=237277251&ambitCountry=DE&damageUnrepaired=NO_DAMAGE_UNREPAIRED&features=TAIL_LIFT&features=TRAILER_COUPLING&fuels=DIESEL&grossPrice=false&isSearchRequest=true&maxMileage=20000&maxPrice=40000&maxSeats=3&minPrice=10000&pageNumber=2&scopeId=VUT75&transmissions=AUTOMATIC_GEAR&transmissions=MANUAL_GEAR&searchId=5047e06e-aaec-5791-763f-ea029c0cac0a",
+        extra: "ab 21.04.2017"
+      },
+      {
+        name: "Renault Master 3,5t dCi 130 L2H2",
+        img: "https://i.ebayimg.com/00/s/Nzg3WDE0MDA=/z/NtEAAOSwOFBagyNa/$_20.jpg",
+        price: "19.480,-",
+        hp: "130",
+        isnew: "Nein",
+        km: "4000",
+        year: "10/2017",
+        load: "ca 1300 kg",
+        dimensions: "Radstand 3682 mm",
+        innerdimensions: "2.07 m x 5.54 m x 2.499 m",
+        where: "Braunschweig",
+        link: "https://suchen.mobile.de/fahrzeuge/details.html?id=255692389&ambitAddress=Rostock%2C+Mecklenburg-Vorpommern&ambitCountry=DE&category=BoxTypeDeliveryVan&damageUnrepaired=NO_DAMAGE_UNREPAIRED&features=DIVIDER&features=TRAILER_COUPLING&fuels=DIESEL&grossPrice=false&isSearchRequest=true&maxMileage=10000&maxPrice=30000&maxSeats=3&minPrice=10000&minSeats=3&pageNumber=6&scopeId=VUT75&sortOption.sortBy=searchNetGrossPrice&sortOption.sortOrder=ASCENDING&transmissions=AUTOMATIC_GEAR&transmissions=MANUAL_GEAR&userPosition=54.0901331%2C12.1329562&zipcodeRadius=500&searchId=2949797a-9b30-feb7-01be-3e8e49fc139b",
+        extra: ""
+      },
+
+      {
+        name: "Renault Master 3,5t dCi 130 L2H2",
+        img: "https://i.ebayimg.com/00/s/NDgwWDY0MA==/z/9kgAAOSw2tFaeILr/$_20.jpg",
+        price: "21.690,-",
+        hp: "130",
+        isnew: "Ja",
+        km: "0",
+        year: "2018",
+        load: "ca 1400 kg",
+        dimensions: "",
+        innerdimensions: "2.07 m x 5.54 m x 2.499 m",
+        where: "Hamburg",
+        link: "https://www.truckscout24.de/search/ger/detail.asp?vehicletype_id=2&vehicle_id=17773222&make=0&mid=12&page=1&AllowNext=1&language=ger&price_type=1",
+        extra: "-"
+      },
+      {
+        name: "Renault Master 3,5t dCi 130 L2H2",
+        img: "https://pic.truckscout24.net/images-big/22/32/0017773222001.jpg",
+        price: "19.480,-",
+        hp: "130",
+        isnew: "Ja",
+        km: "0",
+        year: "10/2017",
+        load: "ca 1400 kg",
+        dimensions: "",
+        innerdimensions: "2.07 m x 5.54 m x 2.499 m",
+        where: "Hamburg",
+        link: "https://www.truckscout24.de/search/ger/detail.asp?vehicletype_id=2&vehicle_id=17773222&make=0&mid=12&page=1&AllowNext=1&language=ger&price_type=1",
+        extra: "-"
+      },
+      {
+        name: "Ford Transit 350 L4H3 Trend Heck Kasten hoch+lang",
+        img: "https://i.ebayimg.com/00/s/NDgwWDY0MA==/z/ssUAAOSw~c5agw37/$_20.jpg",
+        price: "23.437,-",
+        hp: "155",
+        isnew: "Ja",
+        km: "22",
+        year: "07/2017/2016",
+        load: "ca 1300 kg",
+        dimensions: "",
+        innerdimensions: "",
+        where: "Zwickau",
+        link: "https://suchen.mobile.de/fahrzeuge/details.html?id=224610903&ambitAddress=Rostock%2C+Mecklenburg-Vorpommern&ambitCountry=DE&category=BoxTypeDeliveryVan&damageUnrepaired=NO_DAMAGE_UNREPAIRED&features=DIVIDER&features=TRAILER_COUPLING&fuels=DIESEL&grossPrice=false&isSearchRequest=true&maxMileage=10000&maxPrice=30000&maxSeats=3&minPrice=10000&minSeats=3&pageNumber=1&scopeId=VUT75&sortOption.sortBy=searchNetGrossPrice&sortOption.sortOrder=ASCENDING&transmissions=AUTOMATIC_GEAR&transmissions=MANUAL_GEAR&userPosition=54.0901331%2C12.1329562&zipcodeRadius=500&action=topInCategory&searchId=e45ecd83-ae4a-0064-4c71-9220edce12c1",
+        extra: "-"
+      },
+      {
+        name: "Mercedes-Benz Sprinter 214 CDI",
+        img: "https://i.ebayimg.com/00/s/NzY4WDEwMjQ=/z/n-IAAOSwbPNaeVLK/$_20.jpg",
+        price: "29.328,-",
+        hp: "143",
+        isnew: "Nein",
+        km: "3000",
+        year: "01/2018",
+        load: "ca 1000 kg",
+        dimensions: "",
+        innerdimensions: "",
+        where: "Stendal",
+        link: "https://suchen.mobile.de/fahrzeuge/details.html?id=255980189&ambitAddress=Rostock%2C+Mecklenburg-Vorpommern&ambitCountry=DE&category=BoxTypeDeliveryVan&damageUnrepaired=NO_DAMAGE_UNREPAIRED&features=DIVIDER&features=TRAILER_COUPLING&fuels=DIESEL&grossPrice=false&isSearchRequest=true&maxMileage=10000&maxPrice=30000&maxSeats=3&minPrice=10000&minSeats=3&pageNumber=4&scopeId=VUT75&sortOption.sortBy=standard&sortOption.sortOrder=ASCENDING&transmissions=AUTOMATIC_GEAR&transmissions=MANUAL_GEAR&userPosition=54.0901331%2C12.1329562&zipcodeRadius=200&searchId=9e8460ca-3df2-5aaa-aa82-d853b888468f",
+        extra: "Eher zum Vergleich"
+      },
+      {
+        name: "Renault Master 3,5t dCi 130 L2H2",
+        img: "https://i.ebayimg.com/00/s/MTA2NlgxNjAw/z/9bcAAOSwAGhagkhA/$_20.jpg",
+        price: "19.980,-",
+        hp: "130",
+        isnew: "Nein",
+        km: "2040",
+        year: "04/2017",
+        load: "ca 1400 kg",
+        dimensions: "",
+        innerdimensions: "2.07 m x 5.54 m x 2.499 m",
+        where: "Bad Segeberg",
+        link: "https://suchen.mobile.de/fahrzeuge/details.html?id=253867043&ambitAddress=Rostock%2C+Mecklenburg-Vorpommern&ambitCountry=DE&category=BoxTypeDeliveryVan&damageUnrepaired=NO_DAMAGE_UNREPAIRED&features=DIVIDER&features=TRAILER_COUPLING&fuels=DIESEL&grossPrice=false&isSearchRequest=true&maxMileage=10000&maxPrice=30000&maxSeats=3&minPrice=10000&minSeats=3&pageNumber=6&scopeId=VUT75&sortOption.sortBy=searchNetGrossPrice&sortOption.sortOrder=ASCENDING&transmissions=AUTOMATIC_GEAR&transmissions=MANUAL_GEAR&userPosition=54.0901331%2C12.1329562&zipcodeRadius=500&searchId=2949797a-9b30-feb7-01be-3e8e49fc139b",
+        extra: "-"
+      },
+      {
+        name: "Renault Master 3,3t dCi 130 L2H2",
+        img: "https://i.ebayimg.com/00/s/MzAwWDQwMA==/z/g6IAAOSw5KtaghMB/$_20.jpg",
+        price: "19.311,-",
+        hp: "110",
+        isnew: "Ja",
+        km: "5",
+        year: "09/2017",
+        load: "ca 1400 kg",
+        dimensions: "",
+        innerdimensions: "",
+        where: "Neumünster",
+        link: "https://suchen.mobile.de/fahrzeuge/details.html?id=257044359&ambitAddress=Rostock%2C+Mecklenburg-Vorpommern&ambitCountry=DE&category=BoxTypeDeliveryVan&damageUnrepaired=NO_DAMAGE_UNREPAIRED&features=DIVIDER&features=TRAILER_COUPLING&fuels=DIESEL&grossPrice=false&isSearchRequest=true&maxMileage=10000&maxPrice=30000&maxSeats=3&minPrice=10000&minSeats=3&pageNumber=1&scopeId=VUT75&sortOption.sortBy=standard&sortOption.sortOrder=ASCENDING&transmissions=AUTOMATIC_GEAR&transmissions=MANUAL_GEAR&userPosition=54.0901331%2C12.1329562&zipcodeRadius=200&searchId=bfb30bc5-9669-bd61-967a-edabd85e7ced",
+        extra: "-"
+      },
+      {
+        name: "Citroën Jumper 30 HDi 110 ",
+        img: "https://i.ebayimg.com/00/s/NzY4WDEwMjQ=/z/10UAAOSwicpadYUE/$_20.jpg",
+        price: "16.639,-",
+        hp: "110",
+        isnew: "Vorführfahrzeug",
+        km: "22",
+        year: "03/2017",
+        load: "",
+        dimensions: "",
+        innerdimensions: "",
+        where: "Berlin",
+        link: "https://suchen.mobile.de/fahrzeuge/details.html?id=244606869&ambitAddress=Rostock%2C+Mecklenburg-Vorpommern&ambitCountry=DE&category=BoxTypeDeliveryVan&damageUnrepaired=NO_DAMAGE_UNREPAIRED&features=DIVIDER&features=TRAILER_COUPLING&fuels=DIESEL&grossPrice=false&isSearchRequest=true&maxMileage=10000&maxPrice=30000&maxSeats=3&minPrice=10000&minSeats=3&pageNumber=1&scopeId=VUT75&sortOption.sortBy=standard&sortOption.sortOrder=ASCENDING&transmissions=AUTOMATIC_GEAR&transmissions=MANUAL_GEAR&userPosition=54.0901331%2C12.1329562&zipcodeRadius=200&action=topOfPage&top=1:1&searchId=bfb30bc5-9669-bd61-967a-edabd85e7ced",
+        extra: "-"
+      },
+      {
+        name: "Ford Transit 350 L4H3 Trend Heck",
+        img: "https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/9AAAAOSwVNxaN3iB/$_20.jpg",
+        price: "29.395,-",
+        hp: "170",
+        isnew: "Nein",
+        km: "2500",
+        year: "09/2017",
+        load: "ca 1300 kg",
+        dimensions: "",
+        innerdimensions: "",
+        where: "Machern bei Leipzig",
+        link: "https://suchen.mobile.de/fahrzeuge/details.html?id=255058119&ambitCountry=DE&damageUnrepaired=NO_DAMAGE_UNREPAIRED&features=TAIL_LIFT&features=TRAILER_COUPLING&fuels=DIESEL&grossPrice=false&isSearchRequest=true&maxMileage=20000&maxPrice=40000&maxSeats=3&minPrice=10000&pageNumber=1&scopeId=VUT75&transmissions=AUTOMATIC_GEAR&transmissions=MANUAL_GEAR&searchId=63ef4d7e-fe1a-611d-963c-6f9ace72322d",
+        extra: "Ganz viel Schnickschnack"
+      },
+      ]
+      var tmpl = $.templates("#carTemplate");
+      for (var i = 0; i < carData.length; i++) {
+        var html = tmpl.render(carData[i])
+        $("#cardcontainer").append(html)
+      }
+    });
+  </script>
+
+
+</body>
+
 </html>
